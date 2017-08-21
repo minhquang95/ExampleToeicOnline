@@ -12,7 +12,7 @@ public interface GenericDao<ID extends Serializable, T> {
     T Update(T entity);
     void Save (T entity);
     T FindID(ID var1);
-     Object [] findProperty (Map<String,Object> property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit);
+     Object [] findProperty (Map<String,Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit);
      Integer Delete(List<ID> ids);
 
 }

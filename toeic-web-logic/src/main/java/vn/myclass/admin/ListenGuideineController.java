@@ -27,10 +27,13 @@ public class ListenGuideineController extends HttpServlet{
     protected void doGet(HttpServletRequest resquest, HttpServletResponse response) throws ServletException, IOException {
         ListenGuidelineCommand command = new ListenGuidelineCommand();
         command.setMaxPageItems(2);
-        Map<String,Object> property = new HashMap<String,Object>();
-        property.put("context","1");
+        Map<String,Object> map = new HashMap<String,Object>();
+//        property.put("context","HD1");
+//        property.put("context","HD2");
+//        property.put("context","HD3");
+//        property.put("context","HD4");
         RequestUtil.initSearchBean(resquest,command);
-        Object [] objects = listenGuidelineService.findListenGuidelineByProperty(property,command.getSortExpression(),command.getSortDirection(),command.getFirstItem(),command.setMaxPageItems());
+        Object [] objects = listenGuidelineService.findListenGuidelineByProperty(map,command.getSortExpression(),command.getSortDirection(),command.getFirstItem(),command.getMaxPageItems());
 //        for(int i=0; i<2; i++){
 //            ListenGuidelineDTO listenGuidelineDTO = new ListenGuidelineDTO();
 //            listenGuidelineDTO.setTitle("bài hướng dẫn nghe " +(i+1));
@@ -38,9 +41,9 @@ public class ListenGuideineController extends HttpServlet{
 //            listenGuidelineDTOList.add(listenGuidelineDTO);
 //        }
 
-        command.setListResult(listenGuidelineDTOList);
-        command.setMaxPageItems(1);
-        command.setTotalItems(listenGuidelineDTOList.size());
+        command.setListResult((List) objects[1]);
+//        command.setTotalItems((Integer) objects[0]); hỏi vấn đề này
+        command.setTotalItems(Integer.parseInt(objects[0].toString()));
         resquest.setAttribute(WebConstant.LIST_ITEMS,command);
 
 

@@ -7,6 +7,6 @@ import java.util.Map;
 
 public interface ListenGuidelineService {
 
-    Object[] findListenGuidelineByProperty(Map<String,Object> property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit);
+    Object[] findListenGuidelineByProperty(Map<String,Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit);
 
 }

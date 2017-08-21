@@ -1,9 +1,7 @@
 package vn.myclass.core.dto;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.List;
 
 public class ListenGuidelineDTO implements Serializable {
 
@@ -43,6 +41,14 @@ public class ListenGuidelineDTO implements Serializable {
         this.image = image;
     }
 
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
     public Timestamp getModifiedDate() {
         return modifiedDate;
     }
@@ -57,13 +63,5 @@ public class ListenGuidelineDTO implements Serializable {
 
     public void setCreattedDate(Timestamp creattedDate) {
         this.creattedDate = creattedDate;
-    }
-
-    public String getContext() {
-        return context;
-    }
-
-    public void setContext(String context) {
-        this.context = context;
     }
 }

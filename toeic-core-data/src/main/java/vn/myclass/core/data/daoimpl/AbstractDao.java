@@ -103,7 +103,7 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         return result;
     }
 
-    public Object[] findProperty(Map<String, Object> property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit) {
+    public Object[] findProperty(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit) {
         List<T> list = new ArrayList<T>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
