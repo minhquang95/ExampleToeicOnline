@@ -24,16 +24,15 @@
         </div>
         <div class="page-content">
             <div class="row">
+                <c:if test="${not empty messageResponse}">
+                    <div class="alert alert-block alert-${alert}">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="ace-icon fa fa-times"></i>
+                        </button>
+                            ${messageResponse}
+                    </div>
+                </c:if>
                 <div class="col-xs-12">
-                    <a href="${listenGuidelineEditUrl}" type="button">Thêm bài hd</a>
-                    <c:if test="${not empty messageResponse}">
-                        <div class="alert alert-block alert-${alert}">
-                            <button type="button" class="close" data-dismiss="alert">
-                                <i class="ace-icon fa fa-times"></i>
-                            </button>
-                                ${messageResponse}
-                        </div>
-                    </c:if>
                     <div class="table-responsive">
                         <fmt:bundle basename="ApplicationResources">
                             <display:table id="tableList" name="items.listResult" partialList="true" size="${items.totalItems}"

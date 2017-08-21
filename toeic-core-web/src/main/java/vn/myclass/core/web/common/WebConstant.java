@@ -4,7 +4,7 @@ package vn.myclass.core.web.common;
  * Created by Admin on 18/7/2017.
  */
 public class WebConstant {
-    public static final String MESSAGE_RESPONSE = "messageReponse";
+    public static final String MESSAGE_RESPONSE = "messageResponse";
     public static final String FORM_ITEM = "item";
     public static final String LIST_ITEMS = "items";
     public static final String ALERT = "alert";

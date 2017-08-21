@@ -15,17 +15,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet("/admin-guideline-listen-list.html")
 public class ListenGuideineController extends HttpServlet{
     private ListenGuidelineService listenGuidelineService = new ListenGuidelineServiceImpl();
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("ApplicationResources");
     @Override
     protected void doGet(HttpServletRequest resquest, HttpServletResponse response) throws ServletException, IOException {
         ListenGuidelineCommand command = new ListenGuidelineCommand();
+        resquest.setAttribute(WebConstant.ALERT,WebConstant.TYPE_SUCCESS);
+        resquest.setAttribute(WebConstant.MESSAGE_RESPONSE,resourceBundle.getString("label.listenguide.listen.add.succes"));
         command.setMaxPageItems(2);
         Map<String,Object> map = new HashMap<String,Object>();
 //        property.put("context","HD1");
