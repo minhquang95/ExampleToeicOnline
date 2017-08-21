@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class RequestUtil {
     private final Logger log = Logger.getLogger(this.getClass());
-    public  void initSearchBean(HttpServletRequest request, AbstractCommand bean) {
+    public static void initSearchBean(HttpServletRequest request, AbstractCommand bean) {
         if(bean !=null){
             String sortExpression = request.getParameter(new ParamEncoder(bean.getTableId()).encodeParameterName(TableTagParameters.PARAMETER_SORT));
             String sortDirection = request.getParameter(new ParamEncoder(bean.getTableId()).encodeParameterName(TableTagParameters.PARAMETER_ORDER));

@@ -13,7 +13,7 @@ public class ListenGuidelineDTO implements Serializable {
 
     private String image;
 
-    private String content;
+    private String context;
 
     private Timestamp modifiedDate;
 
@@ -43,14 +43,6 @@ public class ListenGuidelineDTO implements Serializable {
         this.image = image;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public Timestamp getModifiedDate() {
         return modifiedDate;
     }
@@ -65,5 +57,13 @@ public class ListenGuidelineDTO implements Serializable {
 
     public void setCreattedDate(Timestamp creattedDate) {
         this.creattedDate = creattedDate;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
     }
 }
