@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
-<c:url value="/admin-guideline-listen-list.html" var="requestUrl">
+<c:url var="requestUrl" value="/admin-guideline-listen-list.html"/>
+<c:url value="/admin-guideline-listen-edit.html" var="listenGuidelineEditUrl">
+    <c:param name="typeUrl" value="url_edit"/>
 </c:url>
 <html>
 <head>
@@ -24,15 +26,16 @@
         </div>
         <div class="page-content">
             <div class="row">
-                <c:if test="${not empty messageResponse}">
-                    <div class="alert alert-block alert-${alert}">
-                        <button type="button" class="close" data-dismiss="alert">
-                            <i class="ace-icon fa fa-times"></i>
-                        </button>
-                            ${messageResponse}
-                    </div>
-                </c:if>
                 <div class="col-xs-12">
+                    <a href="${listenGuidelineEditUrl}" type="button">Thêm bài hd</a>
+                    <c:if test="${not empty messageResponse}">
+                        <div class="alert alert-block alert-${alert}">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <i class="ace-icon fa fa-times"></i>
+                            </button>
+                                ${messageResponse}
+                        </div>
+                    </c:if>
                     <div class="table-responsive">
                         <fmt:bundle basename="ApplicationResources">
                             <display:table id="tableList" name="items.listResult" partialList="true" size="${items.totalItems}"
@@ -40,7 +43,7 @@
                                            class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
                                            style="margin: 3em 0 1.5em;">
                                 <display:column property="title" titleKey="label.guideline.listen.title" sortable="true" sortName="title"/>
-                                <display:column property="context" titleKey="label.guideline.listen.context" sortable="true" sortName="context"/>
+                                <display:column property="content" titleKey="label.guideline.listen.content" sortable="true" sortName="content"/>
                             </display:table>
                         </fmt:bundle>
                     </div>

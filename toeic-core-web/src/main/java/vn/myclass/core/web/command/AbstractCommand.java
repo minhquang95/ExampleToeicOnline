@@ -17,7 +17,7 @@ public class AbstractCommand<T>  {
     private int page = 1;
     private String typeUrl;
 
-
+    
     public String getTypeUrl() {
         return typeUrl;
     }

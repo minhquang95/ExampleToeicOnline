@@ -1,11 +1,14 @@
 package vn.myclass.admin;
 
+import org.apache.commons.fileupload.FileUploadException;
 import org.omg.CORBA.Request;
 import vn.myclass.command.ListenGuidelineCommand;
+import vn.myclass.core.common.util.UploadUtil;
 import vn.myclass.core.dto.ListenGuidelineDTO;
 import vn.myclass.core.service.ListenGuidelineService;
 import vn.myclass.core.service.impl.ListenGuidelineServiceImpl;
 import vn.myclass.core.web.common.WebConstant;
+import vn.myclass.core.web.utils.FormUtil;
 import vn.myclass.core.web.utils.RequestUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -17,44 +20,47 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
 
-@WebServlet("/admin-guideline-listen-list.html")
+@WebServlet(urlPatterns = {"/admin-guideline-listen-list.html","/admin-guideline-listen-edit.html"})
 public class ListenGuideineController extends HttpServlet{
     private ListenGuidelineService listenGuidelineService = new ListenGuidelineServiceImpl();
     ResourceBundle resourceBundle = ResourceBundle.getBundle("ApplicationResources");
     @Override
-    protected void doGet(HttpServletRequest resquest, HttpServletResponse response) throws ServletException, IOException {
-        ListenGuidelineCommand command = new ListenGuidelineCommand();
-        resquest.setAttribute(WebConstant.ALERT,WebConstant.TYPE_SUCCESS);
-        resquest.setAttribute(WebConstant.MESSAGE_RESPONSE,resourceBundle.getString("label.listenguide.listen.add.succes"));
-        command.setMaxPageItems(2);
-        Map<String,Object> map = new HashMap<String,Object>();
-//        property.put("context","HD1");
-//        property.put("context","HD2");
-//        property.put("context","HD3");
-//        property.put("context","HD4");
-        RequestUtil.initSearchBean(resquest,command);
-        Object [] objects = listenGuidelineService.findListenGuidelineByProperty(map,command.getSortExpression(),command.getSortDirection(),command.getFirstItem(),command.getMaxPageItems());
-//        for(int i=0; i<2; i++){
-//            ListenGuidelineDTO listenGuidelineDTO = new ListenGuidelineDTO();
-//            listenGuidelineDTO.setTitle("bài hướng dẫn nghe " +(i+1));
-//            listenGuidelineDTO.setContext(" Nội Dung bài hướng dẫn nghe "+(i+1));
-//            listenGuidelineDTOList.add(listenGuidelineDTO);
-//        }
-
-        command.setListResult((List) objects[1]);
-//        command.setTotalItems((Integer) objects[0]); hỏi vấn đề này
-        command.setTotalItems(Integer.parseInt(objects[0].toString()));
-        resquest.setAttribute(WebConstant.LIST_ITEMS,command);
-
-
-        RequestDispatcher rd = resquest.getRequestDispatcher("/views/admin/listenguideline/list.jsp");
-        rd.forward(resquest,response);
-
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ListenGuidelineCommand command = FormUtil.populate(ListenGuidelineCommand.class, request);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("ApplicationResources");
+        /*command.setMaxPageItems(2);
+        RequestUtil.initSearchBean(request, command);
+        Object[] objects = guidelineService.findListenGuidelineByProperties(null, null, command.getSortExpression(), command.getSortDirection(),command.getFirstItem(),command.getMaxPageItems());
+        command.setListResult((List<ListenGuidelineDTO>) objects[1]);
+        command.setTotalItems(Integer.parseInt(objects[0].toString()));*/
+        /*request.setAttribute(WebConstant.ALERT, WebConstant.TYPE_SUCCESS);
+        request.setAttribute(WebConstant.MESSAGE_RESPONSE, resourceBundle.getString("label.guideline.listen.add.success"));*/
+        request.setAttribute(WebConstant.LIST_ITEMS, command);
+        if (command.getTypeUrl() != null && command.getTypeUrl().equals(WebConstant.URL_LIST)) {
+            RequestDispatcher rd = request.getRequestDispatcher("/views/admin/listenguideline/list.jsp");
+            rd.forward(request, response);
+        } else if (command.getTypeUrl() !=null && command.getTypeUrl().equals(WebConstant.URL_EDIT)) {
+            RequestDispatcher rd = request.getRequestDispatcher("/views/admin/listenguideline/edit.jsp");
+            rd.forward(request, response);
+        }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ListenGuidelineCommand command = new ListenGuidelineCommand();
+        ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
+        UploadUtil uploadUtil = new UploadUtil();
+        try {
+            uploadUtil.writeOrUpdateFile(request);
+            request.setAttribute(WebConstant.ALERT,WebConstant.TYPE_SUCCESS);
+            request.setAttribute(WebConstant.MESSAGE_RESPONSE,bundle.getString("label.guideline.listen.add.success"));
+        } catch (FileUploadException e) {
+            request.setAttribute(WebConstant.ALERT,WebConstant.TYPE_ERROR);
+            request.setAttribute(WebConstant.MESSAGE_RESPONSE,bundle.getString("lable.error"));
+        } catch (Exception e){
+            request.setAttribute(WebConstant.ALERT,WebConstant.TYPE_ERROR);
+            request.setAttribute(WebConstant.MESSAGE_RESPONSE,bundle.getString("lable.error"));
+        }
+        response.sendRedirect("/admin-guideline-listen-list.html?urlType=url_list");
     }
 }

@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <c:url value="/admin-guideline-listen-list.html" var="listenGuidelineListUrl">
-    <c:param name="urlType" value="url_list"/>
+    <c:param name="typeUrl" value="url_list"/>
 </c:url>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
