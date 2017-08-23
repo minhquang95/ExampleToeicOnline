@@ -11,7 +11,7 @@ import java.util.List;
 public class UploadUtil {
     private final int maxMemorySize = 1024 * 1024 * 3;
     private final int maxRequestSize = 1024 * 1024 * 50;
-    public void writeOrUpdateFile(HttpServletRequest request) throws FileUploadException,Exception {
+    public void writeOrUpdateFile(HttpServletRequest request ) throws FileUploadException,Exception {
         // Check that we have a file upload request
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         if(!isMultipart){
@@ -42,6 +42,8 @@ public class UploadUtil {
                         boolean isExist = uploadedFile.exists();
                         if(isExist){
                             uploadedFile.delete();
+                            File uploadedFile1 = new File("D:\\Myclass\\Git\\UploadFile"+fileName);
+                            item.write(uploadedFile1);
                         } else {
                             item.write(uploadedFile);
                         }
@@ -55,7 +57,5 @@ public class UploadUtil {
         }catch(FileUploadException e){
             e.printStackTrace();
         }
-
-
     }
 }

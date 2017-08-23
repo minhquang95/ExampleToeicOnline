@@ -35,8 +35,6 @@ public class LoginController extends HttpServlet {
             if (userService.isUserExist(pojo) != null) {
                 if (userService.FindRoleByUser(pojo) != null && userService.FindRoleByUser(pojo).getRoleDTO() != null) {
                     if (userService.FindRoleByUser(pojo).getRoleDTO().getName().equals(WebConstant.ROLE_ADMIN)) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("name",pojo.getName());
                         response.sendRedirect("/admin-home.html");
                     } else if (userService.FindRoleByUser(pojo).getRoleDTO().getName().equals(WebConstant.ROLE_USER)) {
                         response.sendRedirect("/home.html");
