@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<c:url value="/admin-btvn.html" var="btvn"/>
 <c:url value="/admin-guideline-listen-list.html" var="listenGuidelineListUrl">
     <c:param name="typeUrl" value="url_list"/>
 </c:url>
@@ -49,6 +50,25 @@
             <ul class="submenu">
                 <li class="">
                     <a href="${listenGuidelineListUrl}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <fmt:message key="label.guideline.listen.list" bundle="${lang}"/>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"></span>
+                <fmt:message key="label.exercise" bundle="${lang}"/>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                <li class="">
+                    <a href="${btvn}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         <fmt:message key="label.guideline.listen.list" bundle="${lang}"/>
                     </a>

@@ -4,18 +4,31 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.lang.StringUtils;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class UploadUtil {
     private final int maxMemorySize = 1024 * 1024 * 3;
     private final int maxRequestSize = 1024 * 1024 * 50;
-    public void writeOrUpdateFile(HttpServletRequest request ) throws FileUploadException,Exception {
+    public Object [] writeOrUpdateFile(HttpServletRequest request, Set<String> titleValue, String path) throws FileUploadException,Exception {
+        ServletContext context = request.getServletContext();
+        String adress = context.getRealPath("image");
+        boolean check = true;
+        String fileLocation = null;
+        String name = null;
+        Map<String, String> mapReturnValue = new HashMap<String,String>();
         // Check that we have a file upload request
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         if(!isMultipart){
             System.out.println("have not enctype");
+            check = false;
         }
 
         // Create a factory for disk-based file items
@@ -30,32 +43,39 @@ public class UploadUtil {
 
 // Set overall request size constraint
         upload.setSizeMax(maxRequestSize);
-
-// Parse the request
-        try{
-            List<FileItem> items = upload.parseRequest(request);
-            for(FileItem item: items){
-                if(!item.isFormField()){
-                    String fileName = item.getName();
-                    File uploadedFile = new File("D:\\Myclass\\Git\\UploadFile"+fileName);
-                    try{
-                        boolean isExist = uploadedFile.exists();
-                        if(isExist){
-                            uploadedFile.delete();
-                            File uploadedFile1 = new File("D:\\Myclass\\Git\\UploadFile"+fileName);
-                            item.write(uploadedFile1);
-                        } else {
+        List<FileItem> items = upload.parseRequest(request);
+        for(FileItem item: items){
+            if(!item.isFormField()){
+                String fileName = item.getName();
+                if(StringUtils.isNotBlank(fileName)){
+                    File uploadedFile = new File(adress + File.separator + path + File.separator+ fileName);
+                    System.out.println(adress + File.separator + path + File.separator);
+                    fileLocation = adress + File.separator + path + File.separator;
+                    name = fileName;
+                    boolean isExist = uploadedFile.exists();
+                    if(isExist){
+                        if(uploadedFile.delete()){
                             item.write(uploadedFile);
+                        }else{
+                            check = false;
                         }
 
-                    } catch (Exception e){
-                        e.printStackTrace();
+                    } else {
+                        item.write(uploadedFile);
                     }
+                }
 
+            }else{
+                if(titleValue != null){
+                    String nameField = item.getFieldName();
+                    String valueField = item.getString();
+                    if(titleValue.contains(nameField)==true){
+                        mapReturnValue.put(nameField,valueField);
+
+                    }
                 }
             }
-        }catch(FileUploadException e){
-            e.printStackTrace();
         }
+        return new Object[]{check, fileLocation,name,mapReturnValue};
     }
 }

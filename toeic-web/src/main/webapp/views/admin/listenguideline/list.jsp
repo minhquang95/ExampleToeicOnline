@@ -1,3 +1,4 @@
+<%@ taglib prefix="dispplay" uri="http://displaytag.sf.net" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="requestUrl" value="/admin-guideline-listen-list.html"/>
@@ -34,7 +35,7 @@
                                 <i class="ace-icon fa fa-times"></i>
                             </button>
                                 ${messageResponse}
-                        </div>
+                        </div>n
                     </c:if>
                     <div class="table-responsive">
                         <fmt:bundle basename="ApplicationResources">
@@ -43,7 +44,27 @@
                                            class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
                                            style="margin: 3em 0 1.5em;">
                                 <display:column property="title" titleKey="label.guideline.listen.title" sortable="true" sortName="title"/>
-                                <display:column property="content" titleKey="label.guideline.listen.content" sortable="true" sortName="content"/>
+                                <display:column property="context" titleKey="label.guideline.listen.content" sortable="true" sortName="context"/>
+                                <display:column>
+
+                                    <div class="hidden-sm hidden-xs btn-group">
+                                        <button class="btn btn-xs btn-success">
+                                            <i class="ace-icon fa fa-check bigger-120"></i>
+                                        </button>
+
+                                        <button class="btn btn-xs btn-info">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </button>
+
+                                        <button class="btn btn-xs btn-danger">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+
+                                        <button class="btn btn-xs btn-warning">
+                                            <i class="ace-icon fa fa-flag bigger-120"></i>
+                                        </button>
+                                    </div>
+                                </display:column>
                             </display:table>
                         </fmt:bundle>
                     </div>
