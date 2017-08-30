@@ -5,16 +5,15 @@
     <title><dec:title default="Login Page"/> </title>
     <meta name="description" content="overview &amp; stats" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-    <link rel="stylesheet" href="<c:url value='template/admin/assets/css/bootstrap.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='template/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='template/admin/font/font-awesome.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='template/admin/assets/css/ace.min.css'/>" class="ace-main-stylesheet" id="main-ace-style" />
-    <link rel="stylesheet" href="<c:url value='template/admin/assets/css/ace-part2.min.css' />" class="ace-main-stylesheet" />
-    <link rel="stylesheet" href="<c:url value='template/admin/assets/css/ace-ie.min.css' />" />
-    <script src="<c:url value='template/admin/assets/js/ace-extra.min.js' />"></script>
-    <script src="<c:url value='template/admin/assets/js/html5shiv.min.js' />"></script>
-    <script src="<c:url value='template/admin/assets/js/respond.min.js' />"></script>
+    <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/bootstrap.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='/template/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='/template/admin/font/font-awesome.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/ace.min.css'/>" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/ace-part2.min.css' />" class="ace-main-stylesheet" />
+    <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/ace-ie.min.css' />" />
+    <script src="<c:url value='/template/admin/assets/js/ace-extra.min.js' />"></script>
+    <script src="<c:url value='/template/admin/assets/js/html5shiv.min.js' />"></script>
+    <script src="<c:url value='/template/admin/assets/js/respond.min.js' />"></script>
     <dec:head />
 </head>
 <body class="login-layout">
@@ -35,18 +34,18 @@
 </div>
 <%--<%@ include file="/common/web/footer.jsp" %>--%>
 
-<script src="<c:url value='template/admin/assets/js/bootstrap.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/excanvas.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/jquery-ui.custom.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/jquery.ui.touch-punch.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/jquery.easypiechart.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/jquery.sparkline.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/jquery.flot.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/jquery.flot.pie.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/jquery.flot.resize.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/bootstrap.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/excanvas.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/jquery-ui.custom.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/jquery.ui.touch-punch.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/jquery.easypiechart.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/jquery.sparkline.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/jquery.flot.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/jquery.flot.pie.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/jquery.flot.resize.min.js' />"></script>
 
-<script src="<c:url value='template/admin/assets/js/ace-elements.min.js' />"></script>
-<script src="<c:url value='template/admin/assets/js/ace.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/ace-elements.min.js' />"></script>
+<script src="<c:url value='/template/admin/assets/js/ace.min.js' />"></script>
 
 </body>
 </html>
