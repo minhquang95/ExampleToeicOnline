@@ -11,4 +11,6 @@ public interface UserService {
     UserDTO FindRoleByUser(UserDTO dto);
     Object[] findListenGuidelineByProperty(Map<String,Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit);
     void ImportExcel(UserDTO userDTO);
+    void register(UserDTO dto);
+    UserDTO findById(Integer userId);
 }

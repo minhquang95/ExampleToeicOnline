@@ -47,6 +47,14 @@ public class UserEntity {
         this.roleEntity = roleEntity;
     }
 
+    public List<CommentEntity> getCommentEntityList() {
+        return commentEntityList;
+    }
+
+    public void setCommentEntityList(List<CommentEntity> commentEntityList) {
+        this.commentEntityList = commentEntityList;
+    }
+
     public Integer getUserId() {
         return userId;
     }

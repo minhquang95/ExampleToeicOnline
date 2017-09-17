@@ -50,4 +50,16 @@ public class UserServiceImpl implements UserService {
         UserEntity entity = UserBeanUtil.dto2Entity((UserDTO) objects[0]);
         userDao.Save(entity);
     }
+
+    public void register(UserDTO dto) {
+        UserDao userDao = new UserDaoImpl();
+        UserEntity userEntity = UserBeanUtil.dto2Entity(dto);
+        userDao.Save(userEntity);
+    }
+
+    public UserDTO findById(Integer userId) {
+        UserEntity userEntity = userDao.FindID(userId);
+        UserDTO userDTO = UserBeanUtil.entity2Dto(userEntity);
+        return userDTO;
+    }
 }

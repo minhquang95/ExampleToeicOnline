@@ -19,9 +19,9 @@
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <%
-                            if(session.getAttribute("name") != null){
+                            if(session.getAttribute("user") != null){
                         %>
-                        <p>Username:<strong><%=session.getAttribute("name") %></strong> </p>
+                        <p>Username:<strong><%=session.getAttribute("user") %></strong> </p>
                         <%} %>
 
                     </a>

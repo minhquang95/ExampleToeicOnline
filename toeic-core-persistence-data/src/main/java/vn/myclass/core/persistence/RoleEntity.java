@@ -35,4 +35,12 @@ public class RoleEntity {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<UserEntity> getUserEntityList() {
+        return userEntityList;
+    }
+
+    public void setUserEntityList(List<UserEntity> userEntityList) {
+        this.userEntityList = userEntityList;
+    }
 }

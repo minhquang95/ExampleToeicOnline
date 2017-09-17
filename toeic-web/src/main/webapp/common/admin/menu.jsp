@@ -4,7 +4,9 @@
 <c:url value="/admin-guideline-listen-list.html" var="listenGuidelineListUrl">
     <c:param name="typeUrl" value="url_list"/>
 </c:url>
-<c:url value = "/admin-user-list.html" var ="User"/>
+<c:url value="/admin-user-edit.html" var="userListUrl">
+    <c:param name="typeUrl" value="url_list"/>
+</c:url>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
     <script type="text/javascript">
@@ -68,7 +70,7 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li class="">
-                    <a href="${User}">
+                    <a href="${userListUrl}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         <fmt:message key="label.guideline.listen.list" bundle="${lang}"/>
                     </a>

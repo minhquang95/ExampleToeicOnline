@@ -13,25 +13,24 @@
                         <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
                         <div class="nav-collapse collapse navbar-responsive-collapse">
                             <ul class="nav">
-                                <li class="active"><a href="index.html">Home</a></li>
+                                <li class="active"><a href="/home.html">Trang Chủ</a></li>
 
-                                <li class="dropdown">
-                                    <a href="about.html" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="about.html">Company</a></li>
-                                        <li><a href="about.html">History</a></li>
-                                        <li><a href="about.html">Team</a></li>
-                                    </ul>
+                                <%--<li class="dropdown">--%>
+                                    <%--<a href="about.html" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>--%>
+                                    <%--<ul class="dropdown-menu">--%>
+                                        <%--<li><a href="about.html">Company</a></li>--%>
+                                        <%--<li><a href="about.html">History</a></li>--%>
+                                        <%--<li><a href="about.html">Team</a></li>--%>
+                                    <%--</ul>--%>
 
-                                </li>
+                                <%--</li>--%>
 
-                                <li><a href="service.html">Services</a></li>
+                                <li><a href="/login.html">Đăng Nhập</a></li>
                                 <li><a href="blog.html">Blog</a></li>
                                 <li><a href="contact.html">Contact</a></li>
 
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>

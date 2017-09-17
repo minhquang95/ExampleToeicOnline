@@ -14,5 +14,6 @@
         <mapping class = "vn.myclass.core.persistence.RoleEntity"/>
         <mapping class = "vn.myclass.core.persistence.CommentEntity"/>
         <mapping class = "vn.myclass.core.persistence.ListenGuideLineEntity"/>
+        <mapping class = "vn.myclass.core.persistence.SlideEntity"/>
     </session-factory>
 </hibernate-configuration>

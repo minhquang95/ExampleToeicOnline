@@ -16,6 +16,10 @@ public class UserDTO implements Serializable {
 
     private RoleDTO roleDTO;
 
+    public int roleid(){
+
+        return roleDTO.getRoleId();
+    }
     public Integer getUserId() {
         return userId;
     }

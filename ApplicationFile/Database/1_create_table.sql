@@ -11,3 +11,10 @@ create table roleEntity (
 	roleid bigint not null primary key,
     name varchar(100) null
 );
+
+use toeiconline;
+create table slideBanner (
+	slidename varchar(255) null,
+	slidecontent varchar(255) null,
+	slideimage varchar(255) null,
+);

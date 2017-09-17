@@ -7,5 +7,4 @@ public interface UserDao extends GenericDao<Integer, UserEntity> {
      UserEntity isUserExist(String name, String password);
      UserEntity FindRoleByUser(String name, String password);
      UserEntity FindName(String name);
-
 }
